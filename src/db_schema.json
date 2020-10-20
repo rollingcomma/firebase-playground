@@ -1,0 +1,47 @@
+{
+  "user": {
+    "uid": "",
+    "username":"",
+    "email":"",
+    "photoUrl":"",
+    "chatChannels":{
+      "uid1":"channelId",
+      "uid2":"channelId"
+    },
+    "chatRooms": {
+      "eventId1":"roomId",
+      "eventId2":"roomId"
+    }
+  },
+
+  "channels": {
+    "channelId":"",
+    "user1":"uid",
+    "user2":"uid",
+    "createdAt":""
+  },
+
+  "rooms":{
+    "roomId": "",
+    "eventId": "event",
+    "createdAt": ""
+  },
+
+  "messages":{
+    "sender":"uid",
+    "channelId":"",
+    "roomId":"",
+    "msg":"",
+    "createdAt":""
+  },
+
+  "event":{
+    "organizer":"uid",
+    "location":"",
+    "time":"",
+    "createdAt":"",
+    "status":""
+  }
+  
+}
+
