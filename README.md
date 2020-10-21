@@ -2,12 +2,12 @@
 
 ## google provider
 Official documentary 
-- firebase[https://firebase.google.com/docs/auth/web/google-signin]
+- [firebase setup!](https://firebase.google.com/docs/auth/web/google-signin)
 
 ## facebook provider
 Official documentary 
-- firebase[https://firebase.google.com/docs/auth/web/facebook-login]
-- facebook[https://developers.facebook.com/docs/facebook-login/web/]
+- [firebase setup!](https://firebase.google.com/docs/auth/web/facebook-login)
+- [facebook setup!](https://developers.facebook.com/docs/facebook-login/web/)
 
 **Notes**
 - development mode requires privacy URL setup for user login test
