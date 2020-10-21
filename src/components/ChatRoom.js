@@ -17,7 +17,7 @@ import {
     InputGroupAddon
 } from 'reactstrap';
 // import Moment from 'moment';
-import firebase from '../Firebase';
+import {firestore} from '../firebase';
 import ScrollToBottom from 'react-scroll-to-bottom';
 import '../styles/chatroom.css';
 
@@ -39,7 +39,7 @@ function ChatRoom() {
         const fetchData = async () => {
             setNickname(localStorage.getItem('nickname'));
             setRoomname(room);
-            firebase.database().ref('chats/').orderByChild('roomname').equalTo(roomname).on('value', resp => {
+            firestore().ref('chats/').orderByChild('roomname').equalTo(roomname).on('value', resp => {
               setChats([]);
               setChats(snapshotToArray(resp));
             });
@@ -52,7 +52,7 @@ function ChatRoom() {
         const fetchData = async () => {
             setNickname(localStorage.getItem('nickname'));
             setRoomname(room);
-            firebase.database().ref('roomusers/').orderByChild('roomname').equalTo(roomname).on('value', (resp2) => {
+            firestore().ref('roomusers/').orderByChild('roomname').equalTo(roomname).on('value', (resp2) => {
               setUsers([]);
               const roomusers = snapshotToArray(resp2);
               setUsers(roomusers.filter(x => x.status === 'online'));
@@ -79,9 +79,9 @@ function ChatRoom() {
         const chat = newchat;
         chat.roomname = roomname;
         chat.nickname = nickname;
-        chat.date = firebase.firestore.FieldValue.serverTimestamp();;
+        chat.date = firestore.FieldValue.serverTimestamp();;
         chat.type = 'message';
-        const newMessage = firebase.database().ref('chats/').push();
+        const newMessage = firestore().ref('chats/').push();
         newMessage.set(chat);
         setNewchat({ roomname: '', nickname: '', message: '', date: '', type: '' });
     };
@@ -95,18 +95,18 @@ function ChatRoom() {
         const chat = { roomname: '', nickname: '', message: '', date: '', type: '' };
         chat.roomname = roomname;
         chat.nickname = nickname;
-        chat.date = firebase.firestore.FieldValue.serverTimestamp();
+        chat.date = firestore.FieldValue.serverTimestamp();
         chat.message = `${nickname} leave the room`;
         chat.type = 'exit';
-        const newMessage = firebase.database().ref('chats/').push();
+        const newMessage = firestore().ref('chats/').push();
         newMessage.set(chat);
     
-        firebase.database().ref('roomusers/').orderByChild('roomname').equalTo(roomname).once('value', (resp) => {
+        firestore().ref('roomusers/').orderByChild('roomname').equalTo(roomname).once('value', (resp) => {
           let roomuser = [];
           roomuser = snapshotToArray(resp);
           const user = roomuser.find(x => x.nickname === nickname);
           if (user !== undefined) {
-            const userRef = firebase.database().ref('roomusers/' + user.key);
+            const userRef = firestore().ref('roomusers/' + user.key);
             userRef.update({status: 'offline'});
           }
         });

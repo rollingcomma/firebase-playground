@@ -12,13 +12,13 @@ import {
   Label,
   Input
 } from 'reactstrap';
-import firebase from '../Firebase';
+import {firestore} from '../firebase';
 
 function AddRoom() {
   const history = useHistory();
   const [room, setRoom] = useState({ roomname: '' });
   const [showLoading, setShowLoading] = useState(false);
-  const ref = firebase.database().ref('rooms/');
+  const ref = firestore().ref('rooms/');
 
   const save = (e) => {
     e.preventDefault();
@@ -33,7 +33,7 @@ function AddRoom() {
           </div>
         );
       } else {
-        const newRoom = firebase.database().ref('rooms/').push();
+        const newRoom = firestore().ref('rooms/').push();
         newRoom.set(room);
         history.goBack();
         setShowLoading(false);
