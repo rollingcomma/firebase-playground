@@ -1,14 +1,14 @@
-# React Firebase authentication practice with google & facebook provider
+# React Firebase authentication practice with Google & Facebook
 
-## google provider
+## Google provider
 Official documentary 
-- [firebase setup!](https://firebase.google.com/docs/auth/web/google-signin)
+- [firebase setup](https://firebase.google.com/docs/auth/web/google-signin)
 
-## facebook provider
+## Facebook provider
 Official documentary 
-- [firebase setup!](https://firebase.google.com/docs/auth/web/facebook-login)
-- [facebook setup!](https://developers.facebook.com/docs/facebook-login/web/)
+- [firebase setup](https://firebase.google.com/docs/auth/web/facebook-login)
+- [facebook setup](https://developers.facebook.com/docs/facebook-login/web/)
 
 **Notes**
-- development mode requires privacy URL setup for user login test
-- alternative are creating tester accounts using facebook develop tools or add friends account as tester to the app
+- privacy URL setup is required in order to active production mode for general users login test
+- alternatives are creating tester accounts using facebook develop tools or add friends account as tester to the app
